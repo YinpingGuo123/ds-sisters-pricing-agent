@@ -1,0 +1,20 @@
+# Secrets — never commit real credentials
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Editors
+.idea/
+.vscode/
+.ipynb_checkpoints/
+
+# Generated data (see data/README.md — this stage does not exist yet)
+data/processed/

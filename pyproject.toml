@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pricing-agent"
+version = "0.1.0"
+description = "Multi-agent quotation workflow (course MVP)"
+requires-python = ">=3.10"
+
+# Keep this list minimal. Adding a dependency affects all three of us, so
+# please raise it with the team and merge it as its own small PR.
+dependencies = [
+    "langgraph",      # workflow orchestration; pulls langchain-core + pydantic transitively
+    "python-dotenv",  # loads .env in config.py so each member uses their own local keys
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
