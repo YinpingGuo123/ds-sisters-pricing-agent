@@ -14,6 +14,9 @@ production.
 - **Do not implement another owner's agent unless explicitly asked.** Each of the
   three agent modules in `src/pricing_agent/agents/` has a single owner.
 - Each node writes only its own state key and returns a partial dict.
+- Tools and helpers go in `src/pricing_agent/tools/<agent>.py`, matching the agent
+  that owns them. Prefer plain deterministic functions the node calls directly;
+  only expose an LLM-callable tool when the model must decide when to call it.
 
 ## Coordinate before changing
 
@@ -23,6 +26,7 @@ rather than editing them as a side effect of other work:
 - `src/pricing_agent/state.py` — the state contract
 - `src/pricing_agent/graph.py` — the workflow wiring
 - `src/pricing_agent/config.py` — env and model resolution
+- `src/pricing_agent/tools/shared.py` — tools used by more than one agent, if created
 - `pyproject.toml` — dependencies
 
 They are expected to evolve; they just need agreement, not protection.

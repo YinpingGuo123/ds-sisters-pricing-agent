@@ -27,6 +27,35 @@ Each of us owns one agent. Work only in your own file unless we agree otherwise.
 > Naming note: the package `pricing_agent` is the **whole workflow**. The pricing
 > agent specifically is `agents/pricing.py`.
 
+## Tools
+
+Tools and helper functions live in `src/pricing_agent/tools/`, one module per
+agent, named to match `agents/`:
+
+| Your agent | Your tools file |
+| --- | --- |
+| Intake | `src/pricing_agent/tools/intake.py` |
+| Pricing | `src/pricing_agent/tools/pricing.py` |
+| Quotation | `src/pricing_agent/tools/quotation.py` |
+
+**These files do not exist yet — create yours when you have something to put in
+it.** Same filename as your agent means same owner, so there is no extra rule to
+remember.
+
+### Not everything should be an LLM tool
+
+- A **tool** is exposed to the model, which decides whether and how to call it.
+- A **helper** is a plain function your node calls directly in Python.
+
+Default to plain helpers. Deterministic logic — pricing math, validation rules —
+should not go through the model: it stays reproducible, and it is the part of
+this project actually worth unit-testing. Expose a real tool only when the model
+genuinely needs to choose, such as looking up an unfamiliar product mentioned in
+free-text RFQ.
+
+If two agents end up needing the same tool (customer lookup is the likely one),
+put it in `tools/shared.py` and treat it as a shared file — see below.
+
 ## Shared files — coordinate with the team before changing
 
 These are the files all three of us depend on. Changing them can break the other
@@ -37,6 +66,7 @@ two, so raise it in the group chat first and merge it as its own small PR.
 | `src/pricing_agent/state.py` | The `QuotationState` contract passed between agents |
 | `src/pricing_agent/graph.py` | Wires the three nodes into the LangGraph flow |
 | `src/pricing_agent/config.py` | Loads `.env`, resolves which model each agent uses |
+| `src/pricing_agent/tools/shared.py` | Tools used by more than one agent (does not exist yet) |
 | `pyproject.toml` | Dependencies |
 
 They are not frozen — the contract will need to evolve once we pick the domain.
