@@ -1,6 +1,6 @@
 """Intake agent — PLACEHOLDER.
 
-Owner: TBD (claim this in the README table)
+Owner: Yinping
 
 Reads:  state["raw_request"]
 Writes: state["intake_result"]

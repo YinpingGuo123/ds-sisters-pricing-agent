@@ -1,6 +1,6 @@
 """Pricing agent — PLACEHOLDER.
 
-Owner: TBD (claim this in the README table)
+Owner: Rea
 
 Reads:  state["intake_result"]
 Writes: state["pricing_result"]

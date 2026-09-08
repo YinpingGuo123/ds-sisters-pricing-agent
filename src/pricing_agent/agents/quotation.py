@@ -1,6 +1,6 @@
 """Quotation agent — PLACEHOLDER.
 
-Owner: TBD (claim this in the README table)
+Owner: Jenny
 
 Reads:  state["intake_result"], state["pricing_result"]
 Writes: state["quotation_result"]

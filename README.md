@@ -20,11 +20,9 @@ Each of us owns one agent. Work only in your own file unless we agree otherwise.
 
 | Agent | Responsibility | Your file | Owner |
 | --- | --- | --- | --- |
-| Intake | Extract and normalize the RFQ into a structured result | `src/pricing_agent/agents/intake.py` | _TBD_ |
-| Pricing | Apply pricing logic to the intake result | `src/pricing_agent/agents/pricing.py` | _TBD_ |
-| Quotation | Validate and produce the final quotation, or flag for review | `src/pricing_agent/agents/quotation.py` | _TBD_ |
-
-Put your name in the table and in your file's docstring when you claim a module.
+| Intake | Extract and normalize the RFQ into a structured result | `src/pricing_agent/agents/intake.py` | Yinping |
+| Pricing | Apply pricing logic to the intake result | `src/pricing_agent/agents/pricing.py` | Rea |
+| Quotation | Validate and produce the final quotation, or flag for review | `src/pricing_agent/agents/quotation.py` | Jenny |
 
 > Naming note: the package `pricing_agent` is the **whole workflow**. The pricing
 > agent specifically is `agents/pricing.py`.
